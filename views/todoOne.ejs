@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>ToDo</title>
+	
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+
+
+	<div class="w3-container w3-brown w3-center">
+
+				<br>
+				<br>
+		
+		<a href="/" class="w3-btn button w3-yellow">Home</a>
+				<br>
+				<br>
+
+		<% todos.forEach(function(d) { %>
+				<br>
+
+				<div class="w3-card-4 w3-animate-zoom center w3-sand">
+					<br>
+					<h1 class="titleResto"><%= d.title %></h1>
+					<div class="w3-container w3-center">
+						<div class="w3-center"><%= d.content %></div> 
+						<br>
+						
+						<!-- <br>
+						<div class="w3-center">ts: <%= d.created %></div> 
+						<div class="w3-center">up: <%= d.updated %></div> 
+						<div class="w3-center">id: <%= d._id %></div> 
+ -->
+						<% if (d.checked == true) { %>
+
+							<a href="/check/<%= d._id %>/false" class="w3-btn button w3-green">OK</a>
+							<a href="/del/<%= d._id %>" class="w3-btn button w3-brown">Delete</a>
+						
+						<% } else { %>
+						
+							<a href="/check/<%= d._id %>/true" class="w3-btn button w3-brown">Check</a>
+							<a href="/del/<%= d._id %>" class="w3-btn button w3-brown">Delete</a>
+
+						<% } %>
+
+						<br>
+						<br>
+					</div>
+				</div>
+				</a>
+
+		<% }); %>
+			<br>
+	</div>
+
+
+</body>
+</html>

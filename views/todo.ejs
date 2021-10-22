@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>ToDo</title>
+	
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+
+
+	<div class="w3-container w3-pale-yellow w3-center">
+				<br>
+				<br>
+
+	<div class="w3-card w3-animate-zoom center w3-pale-blue">
+		<br>
+		<h1 class="w3-center titleResto">New Todo</h1>
+		<div class="w3-container w3-center">
+			<br>
+			<form class="w3-margin w3-container" method="post" action="/add">
+				<input autofocus required class="w3-input w3-sand" type="text" name="form[title]" value="" placeholder="Title"/>
+				<input class="w3-input w3-sand" type="text" name="form[content]" value="" placeholder="Content"/>
+			<br>
+
+				<input class="w3-margin w3-btn button fa-2x w3-green" type="submit" name="submit" id="submit" value="Save" />
+			</form>
+			<br>
+
+		</div>
+	</div>
+				<br>
+				<br>
+
+	</div>
+
+
+	<div class="w3-container w3-brown w3-center">
+
+		<% todosUnchecked.forEach(function(d) { %>
+				<br>
+				
+				<div style="cursor: pointer;" onclick="window.location='todo/<%= d._id %>';" class="w3-card-4 w3-animate-zoom center w3-sand">
+				
+					<br>
+					<h1 class="titleResto"><%= d.title %></h1>
+					<div class="w3-container w3-center">
+						<div class="w3-center"><%= d.content %></div> 
+						<br>
+
+						<!-- <br> -->
+						<!-- <div class="w3-center">ts: <%= d.created %></div> 
+						<div class="w3-center">up: <%= d.updated %></div> 
+						<div class="w3-center">id: <%= d._id %></div>  -->
+
+						<% if (d.checked == true) { %>
+
+							<a href="/check/<%= d._id %>/false" class="w3-btn button w3-green">OK</a>
+							<a href="/del/<%= d._id %>" class="w3-btn button w3-brown">Delete</a>
+						
+						<% } else { %>
+
+							<a href="/check/<%= d._id %>/true" class="w3-btn button w3-brown">Check</a>
+							<a href="/del/<%= d._id %>" class="w3-btn button w3-brown">Delete</a>
+
+						<% } %>
+
+						<br>
+						<br>
+					</div>
+
+				</div>
+
+		<% }); %>
+			<br>
+
+	</div>
+
+	<div class="w3-container w3-brown w3-center">
+
+		<% todosChecked.forEach(function(d) { %>
+				<br>
+
+				<div style="cursor: pointer;" onclick="window.location='todo/<%= d._id %>';" class="w3-card-4 w3-animate-zoom center w3-sand">
+					<br>
+					<h1 class="titleResto"><%= d.title %></h1>
+					<div class="w3-container w3-center">
+						<div class="w3-center"><%= d.content %></div> 
+						<br>
+						
+						<!-- <br> -->
+			<!-- 			<div class="w3-center">ts: <%= d.created %></div> 
+						<div class="w3-center">up: <%= d.updated %></div> 
+						<div class="w3-center">id: <%= d._id %></div>  -->
+
+						<% if (d.checked == true) { %>
+
+							<a href="/check/<%= d._id %>/false" class="w3-btn button w3-green">OK</a>
+							<a href="/del/<%= d._id %>" class="w3-btn button w3-brown">Delete</a>
+						
+						<% } else { %>
+						
+							<a href="/check/<%= d._id %>/true" class="w3-btn button w3-brown">Check</a>
+							<a href="/del/<%= d._id %>" class="w3-btn button w3-brown">Delete</a>
+
+						<% } %>
+
+						<br>
+						<br>
+					</div>
+				</div>
+				</a>
+
+		<% }); %>
+			<br>
+	</div>
+
+
+</body>
+</html>
